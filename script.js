@@ -1,5 +1,3 @@
-// script.js
-
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -37,30 +35,24 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-
-
-
-// script.js
-
 function toggleProjectDetails(button) {
-    const details = button.nextElementSibling; // Select the next sibling (project-details div)
+    const details = button.nextElementSibling;
 
     if (details.classList.contains('hidden')) {
         details.classList.remove('hidden');
-        button.textContent = 'Show Less'; // Change button text to "Show Less"
+        button.textContent = 'Show Less';
     } else {
         details.classList.add('hidden');
-        button.textContent = 'Learn More'; // Change button text back to "Learn More"
+        button.textContent = 'Learn More';
     }
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggle-btn');
 
-    // Set the sidebar to open by default
     sidebar.classList.add('open');
 
-    // Function to toggle the sidebar
     function toggleSidebar() {
         if (sidebar.classList.contains('open')) {
             sidebar.classList.remove('open');
@@ -71,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Attach click event to toggle button
     toggleBtn.addEventListener('click', toggleSidebar);
 });
 
@@ -80,22 +71,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     links.forEach(link => {
         link.addEventListener('click', function () {
-            // Remove 'active' class from all links
             links.forEach(link => link.classList.remove('active'));
-
-            // Add 'active' class to the clicked link
             this.classList.add('active');
         });
     });
 });
+
 document.addEventListener('DOMContentLoaded', function () {
     const colorCircles = document.querySelectorAll('.color-circle');
+
+    function darkenColor(hex, percent) {
+        let r = parseInt(hex.slice(1, 3), 16),
+            g = parseInt(hex.slice(3, 5), 16),
+            b = parseInt(hex.slice(5, 7), 16);
+
+        r = Math.max(0, Math.min(255, Math.round(r * (1 - percent / 100))));
+        g = Math.max(0, Math.min(255, Math.round(g * (1 - percent / 100))));
+        b = Math.max(0, Math.min(255, Math.round(b * (1 - percent / 100))));
+
+        let rr = (r.toString(16).length < 2) ? '0' + r.toString(16) : r.toString(16);
+        let gg = (g.toString(16).length < 2) ? '0' + g.toString(16) : g.toString(16);
+        let bb = (b.toString(16).length < 2) ? '0' + b.toString(16) : b.toString(16);
+
+        return '#' + rr + gg + bb;
+    }
 
     colorCircles.forEach(circle => {
         circle.addEventListener('click', function () {
             const primaryColor = this.getAttribute('data-primary');
-            const secondaryColor = this.getAttribute('data-secondary');
-            // Change CSS variables based on selected colors
+            let secondaryColor = this.getAttribute('data-secondary');
+
+            secondaryColor = darkenColor(secondaryColor, 20);
+
             document.documentElement.style.setProperty('--primary-color', primaryColor);
             document.documentElement.style.setProperty('--secondary-color', secondaryColor);
             document.documentElement.style.setProperty('--background-color', adjustBrightness(primaryColor, 50));

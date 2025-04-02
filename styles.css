@@ -78,6 +78,61 @@ section {
     max-width: 100%; /* Adjust as necessary */
 }
 
+/* Home Section Enhancements */
+#home {
+    position: relative;
+    overflow: hidden; /* Prevent parallax overflow */
+}
+
+#home .hero-text {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#home h1 {
+    letter-spacing: 1px; /* Add slight letter spacing */
+}
+
+#home a {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow to button */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Parallax Effect */
+.parallax-home {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#home a.dynamic-button {
+    background-color: var(--primary-color);
+}
+
+#home a.dynamic-button:hover {
+    background-color: var(--secondary-color);
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 4xl; /* Adjust heading size on smaller screens */
+    }
+    #home p {
+        font-size: 1.5xl; /* Adjust paragraph size on smaller screens */
+    }
+    #home a {
+        padding: 0.75rem 1.5rem; /* Adjust button padding on smaller screens */
+    }
+}
 /* Sidebar styles */
 .sidebar {
     position: fixed;
@@ -91,7 +146,9 @@ section {
     transform-origin: left;
     transition: transform 0.4s ease; /* Smooth transition for sliding */
 }
-
+.sidebar .nav-link:hover {
+    color: var(--secondary-color);
+}
 /* Animation for opening sidebar */
 @keyframes zoomIn {
     from {
@@ -160,7 +217,7 @@ section {
 
 /* Custom button styling */
 .full-stack-button {
-    background-color: #1d4ed8; /* Blue background */
+    background-color: var(--primary-color); /* Blue background */
     color: #ffffff; /* White text */
     padding: 0.5rem 1rem; /* Vertical and horizontal padding */
     border-radius: 0.5rem; /* Rounded corners */
@@ -173,42 +230,158 @@ section {
 }
 
 .full-stack-button:hover {
-    background-color: #2563eb; /* Darker blue on hover */
+    background-color: var(--secondary-color);
 }
 
+
 /* Projects Section */
+#projects {
+    background-color: white;
+    padding: 4rem 0; /* Consistent with .contact-section */
+    min-height: 100vh; /* Ensure it fills the viewport if content is short */
+}
+
+#projects .container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+
+
+#projects p {
+    font-size: 1.125rem; /* .section-text */
+    color: #4a5568;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Project Cards */
+.projects-grid .project-card {
+    background-color: #ffffff; /* Changed to white for a cleaner look */
+    padding: 2rem; /* Increased padding for more space */
+    border-radius: 0.75rem; /* Slightly larger radius for modern feel */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+    border: 1px solid rgba(52, 152, 219, 0.2); /* Subtle border with primary color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-grid .project-card:hover {
+    transform: translateY(-6px); /* Slightly higher lift on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+    border-color: var(--primary-color); /* Highlight border on hover */
+}
+
+.projects-grid .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Thin top bar */
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.projects-grid .project-card:hover::before {
+    opacity: 1; /* Full opacity on hover */
+}
+
+.projects-grid h3 {
+    color: var(--primary-color); /* Change to primary color on hover */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+.projects-grid h3:hover {
+    color: var(--secondary-color); /* Change to primary color on hover */
+}
+
+
+.projects-grid p {
+    color: #4a5568;
+    margin-bottom: 1rem; /* More spacing before technologies */
+    font-size: 1rem;
+}
+
+.projects-grid .text-gray-500 {
+    color: #a0aec0;
+    margin-top: 0;
+    font-size: 0.9rem; /* Slightly smaller for secondary info */
+}
+
+.projects-grid a {
+    color: #ffffff;
+    padding: 0.75rem 1.5rem; /* Larger button */
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.projects-grid a:hover {
+    color: white;
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* Pagination */
+#pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem; /* Consistent spacing */
+    margin-top: 2rem;
+}
+
 #pagination button {
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.375rem; /* Slightly larger radius */
+    padding: 0.75rem 1.25rem; /* Larger buttons */
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
-    margin: 0 0.25rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
 #pagination button:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: scale(1.1); /* Slight scale on hover */
 }
 
 #pagination button.active {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: scale(1.05); /* Slightly larger when active */
+}
+
+#pagination button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* No scale when disabled */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .projects-grid .project-card {
+        padding: 1.5rem; /* Slightly less padding on mobile */
+    }
+    #pagination button {
+        padding: 0.5rem 1rem; /* Smaller buttons on mobile */
+    }
 }
 
 
 
 /* About Section */
 #about {
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    height: auto; /* Let it expand based on content */
+    min-height: 100vh; /* Optional: ensure it’s at least full height */
+    padding-bottom: 2rem; /* Add padding to avoid cutting off content */
 }
-
 #about .container {
     max-width: 100%; /* Ensure full width */
 }
@@ -221,6 +394,54 @@ section {
 
 #about p {
     max-width: 40rem; /* Control paragraph width */
+    color: #1a202c;
+}
+/* Skills Section */
+.skills-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.skills-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /* Increased gap for horizontal spacing */
+    padding: 1rem;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.skill-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.skill-category h4 {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.skill-category i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.skill-category i:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .skills-icons {
+        flex-direction: column; /* Stack categories vertically on smaller screens */
+        align-items: center; /* Center categories vertically */
+        gap: 2rem; /* Reduce gap on smaller screens */
+    }
 }
 
 #cv {
@@ -230,7 +451,13 @@ section {
     border-radius: 0.5rem; /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
+#cv a.dynamic-cv-button {
+    background-color: var(--primary-color);
+}
 
+#cv a.dynamic-cv-button:hover {
+    background-color: var(--secondary-color);
+}
 
 /* Project Cards */
 .projects-grid a {
@@ -239,11 +466,13 @@ section {
     border-radius: 0.5rem; /* Tailwind's rounded-lg */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transform transition for hover effect */
+    
 }
 
 .projects-grid a:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tailwind's hover:shadow-lg */
     transform: translateY(-4px); /* Slightly raise the card on hover */
+    
 }
 
 .projects-grid h3 {
@@ -301,12 +530,18 @@ section {
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #3182ce; /* Tailwind's border-blue-500 */
+    border-color: var(--primary-color); /* Tailwind's border-blue-500 */
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Tailwind's focus:ring */
 }
+#contactForm button.dynamic-submit-button {
+    background-color: var(--primary-color);
+}
 
+#contactForm button.dynamic-submit-button:hover {
+    background-color: var(--secondary-color);
+}
 .form-button {
-    background-color: #2b6cb0; /* Tailwind's bg-blue-600 */
+    background-color: var(--primary-color); /* Tailwind's bg-blue-600 */
     color: #ffffff; /* Tailwind's text-white */
     padding: 0.75rem 1.5rem; /* Tailwind's px-6 py-3 */
     border-radius: 0.375rem; /* Tailwind's rounded-md */
@@ -315,7 +550,7 @@ section {
 }
 
 .form-button:hover {
-    background-color: #2c5282; /* Tailwind's hover:bg-blue-700 */
+    background-color: var(--primary-color); /* Tailwind's hover:bg-blue-700 */
     transform: scale(1.02); /* Slightly scale up the button on hover */
 }
 
@@ -348,14 +583,14 @@ section {
 }
 
 .footer-links a {
-    color: #63b3ed; /* Tailwind's text-blue-400 */
+    color: var(--primary-color); /* Tailwind's text-blue-400 */
     font-size: 1rem; /* Tailwind's text-base */
     margin: 0 1rem; /* Space between links */
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #4299e1; /* Tailwind's hover:text-blue-500 */
+    color: var(--secondary-color); /* Tailwind's hover:text-blue-500 */
 }
 
 .social-links {
@@ -365,14 +600,14 @@ section {
 }
 
 .social-links a {
-    color: #63b3ed; /* Tailwind's text-blue-400 */
+    color: var(--primary-color); /* Tailwind's text-blue-400 */
     font-size: 1.5rem; /* Slightly larger icons for better visibility */
     margin: 0 0.5rem; /* Space between icons */
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #4299e1; /* Tailwind's hover:text-blue-500 */
+    color: var(--secondary-color); /* Tailwind's hover:text-blue-500 */
 }
 
 /* Footer Bottom Text */
@@ -407,14 +642,14 @@ section {
 .social-links a {
     display: flex; /* Flexbox for better alignment */
     align-items: center; /* Center icon and text vertically */
-    color: #63b3ed; /* Tailwind's text-blue-400 */
+    color: var(--primary-color); /* Tailwind's text-blue-400 */
     font-size: 1.125rem; /* Tailwind's text-lg */
     font-weight: 500; /* Slightly lighter font weight */
     transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and hover effect */
 }
 
 .social-links a:hover {
-    color: #4299e1; /* Tailwind's hover:text-blue-500 */
+    color: var(--secondary-color); /* Tailwind's hover:text-blue-500 */
     transform: scale(1.1); /* Slightly enlarge icon on hover */
 }
 
@@ -426,7 +661,7 @@ section {
 /* Download CV Button */
 .btn-download, .cv-link {
     display: inline-block;
-    background-color: #2b6cb0; /* Tailwind's bg-blue-600 */
+    background-color: var(--primary-color); /* Tailwind's bg-blue-600 */
     color: #ffffff; /* Tailwind's text-white */
     padding: 0.75rem 1.5rem; /* Tailwind's px-6 py-3 */
     border-radius: 0.375rem; /* Tailwind's rounded-md */
@@ -436,5 +671,19 @@ section {
 }
 
 .btn-download:hover, .cv-link:hover {
-    background-color: #2c5282; /* Tailwind's hover:bg-blue-700 */
+    background-color: var(--secondary-color); /* Tailwind's hover:bg-blue-700 */
+}
+
+#toggle-btn.dynamic-toggle-button {
+    background-color: var(--primary-color);
+}
+
+#toggle-btn.dynamic-toggle-button:hover {
+    background-color: var(--secondary-color);
+}
+#home a.dynamic-button:hover,
+#cv a.dynamic-cv-button:hover,
+#contactForm button.dynamic-submit-button:hover,
+#toggle-btn.dynamic-toggle-button:hover {
+    color: white; /* Always set text color to white on hover */
 }
